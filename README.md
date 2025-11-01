@@ -13,6 +13,6 @@ The encryption and decryption function must be performed automatically once savi
 → โปรแกรมต้อง “เข้ารหัส” (encrypt) ให้ทันทีโดยอัตโนมัติ
 เช่น เมื่อ zip เสร็จ → ระบบเรียก encrypt_file_aes() เอง
 
-เมื่อผู้ใช้เปิดไฟล์ ZIP ที่บีบอัดไว้ (หรือแตกไฟล์)
+เมื่อผู้ใช้เปิดไฟล์ ZIP ที่บีบอัดไว้ (หรือแตกไฟล์).
 → โปรแกรมต้อง “ถอดรหัส” (decrypt) ให้ก่อนอัตโนมัติ
 เช่น ก่อน unzip → ระบบเรียก decrypt_file_aes() เอง
