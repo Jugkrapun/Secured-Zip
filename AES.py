@@ -1,17 +1,12 @@
 import os
-from cryptography.hazmat.primitives.asymmetric import padding
 from cryptography.hazmat.primitives import padding
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 
-# -------------------------------------------------
-# AES HELPERS (CBC + PKCS7)
-# -------------------------------------------------
-
 def aes_encrypt_cbc(plaintext_bytes: bytes, key: bytes):
     """
-    encrpypt with AES-256-CBC
-    return iv, ciphertext
+    Encrypt with AES-256-CBC
+    Returns iv and ciphertext
     """
     iv = os.urandom(16)  # 16-byte IV
     padder = padding.PKCS7(128).padder()  # block size 128 bits = 16 bytes
@@ -26,8 +21,8 @@ def aes_encrypt_cbc(plaintext_bytes: bytes, key: bytes):
 
 def aes_decrypt_cbc(iv: bytes, ciphertext: bytes, key: bytes):
     """
-    decrypt AES-256-CBC + remove PKCS7 padding
-    return plaintext_bytes
+    Decrypt AES-256-CBC + remove PKCS7 padding
+    Returns plaintext bytes
     """
     cipher = Cipher(algorithms.AES(key), modes.CBC(iv), backend=default_backend())
     decryptor = cipher.decryptor()
